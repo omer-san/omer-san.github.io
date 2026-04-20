@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="entry">
+  <header class="entry-header">
+    <h1>{{ page.title }}</h1>
+    <div class="entry-meta">
+      <span>{{ page.client_name }}</span>
+      {% if page.trip %}
+        <span>{{ page.trip }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.images %}
+    <div class="testimonial-gallery">
+      {% for image in page.images %}
+        <a class="gallery-link" href="{{ image | relative_url }}">
+          <img src="{{ image | relative_url }}" alt="{{ page.client_name }} travel photo {{ forloop.index }}">
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="entry-body">
+    {{ content }}
+  </div>
+</article>

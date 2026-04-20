@@ -1,0 +1,41 @@
+title: Omer Tennenhaus
+subtitle: Japan Travel Enthusiast
+email: omer.github@gmail.com
+description: >-
+  Custom travel planning, thoughtful itineraries, and memorable journeys
+  designed around each traveler.
+baseurl: ""
+url: ""
+
+collections:
+  travel_logs:
+    output: true
+    permalink: /travel-log/:name/
+  testimonials:
+    output: true
+    permalink: /testimonials/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: travel_logs
+    values:
+      layout: travel_log
+  - scope:
+      path: ""
+      type: testimonials
+    values:
+      layout: testimonial
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+exclude:
+  - vendor/
+  - .bundle/
+  - README.md

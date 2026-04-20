@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Additional anti-indexing hint for crawlers that honor it.
+Noindex: /

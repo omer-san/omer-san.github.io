@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="entry">
+  <header class="entry-header">
+    <h1>{{ page.title }}</h1>
+    <div class="entry-meta">
+      <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if page.destination %}
+        <span>{{ page.destination }}</span>
+      {% endif %}
+    </div>
+    {% if page.summary %}
+      <p class="page-intro">{{ page.summary }}</p>
+    {% endif %}
+  </header>
+
+  <div class="entry-body">
+    {{ content }}
+  </div>
+</article>

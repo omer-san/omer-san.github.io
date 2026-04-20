@@ -1,0 +1,78 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-card hero-card-full">
+    <img src="https://res.cloudinary.com/det9qfsir/image/upload/v1769360661/website_images/2024/01/IMG_7779-scaled.jpg" alt="Portrait of Omer Tennenhaus">
+    <div class="hero-overlay">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ site.subtitle }}</p>
+        <h1>{{ page.hero_name | default: site.title }}</h1>
+        <div class="hero-actions">
+          <a class="button button-primary" href="{{ '/contact/' | relative_url }}">Plan a Trip</a>
+          <a class="button" href="{{ '/travel-log/' | relative_url }}">Read My Travel Logs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero-intro">
+  <div class="hero-intro-copy">
+    <p class="lead lead-intro">
+      {{ page.title_line }} <span class="title-line-note">({{ page.title_line_katakana }})</span>.
+    </p>
+    <p class="lead">
+      {{ page.hero_intro }}
+    </p>
+  </div>
+</section>
+
+<section class="feature-grid">
+  <article class="feature-card">
+    <h2>Tailored Itineraries</h2>
+    <p>Trips designed around pace, interests, budget, and the kind of moments you actually want to remember.</p>
+  </article>
+  <article class="feature-card">
+    <h2>On-the-Ground Insight</h2>
+    <p>Recommendations grounded in real travel experience, from neighborhood stays to route planning and timing.</p>
+  </article>
+  <article class="feature-card">
+    <h2>Personal Support</h2>
+    <p>Advice that feels collaborative, human, and practical from the first idea to the final day of the trip.</p>
+  </article>
+</section>
+
+<section class="home-split">
+  <div class="panel">
+    <h3><a href="{{ '/travel-log/' | relative_url }}">Travel Logs</a></h3>
+    {% assign latest_logs = site.travel_logs | sort: "date" | reverse | slice: 0, 2 %}
+    <div class="home-preview-list">
+      {% for log in latest_logs %}
+        <article class="home-preview-item">
+          <p class="card-meta">{{ log.date | date: "%B %-d, %Y" }}{% if log.destination %} · {{ log.destination }}{% endif %}</p>
+          <h3><a href="{{ log.url | relative_url }}">{{ log.title }}</a></h3>
+          {% if log.summary %}
+            <p>{{ log.summary }}</p>
+          {% else %}
+            <p>{{ log.excerpt | strip_html | truncatewords: 20 }}</p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3><a href="{{ '/testimonials/' | relative_url }}">Testimonials</a></h3>
+    {% assign latest_reviews = site.testimonials | sort: "date" | reverse | slice: 0, 2 %}
+    <div class="home-preview-list">
+      {% for review in latest_reviews %}
+        <article class="home-preview-item">
+          <p class="card-meta">{{ review.client_name }}{% if review.trip %} · {{ review.trip }}{% endif %}</p>
+          <h3><a href="{{ review.url | relative_url }}">{{ review.title }}</a></h3>
+          <p>{{ review.content | markdownify | strip_html | truncatewords: 24 }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
