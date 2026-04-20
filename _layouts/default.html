@@ -27,9 +27,20 @@
               <small>{{ site.subtitle }}</small>
             </span>
           </a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Open navigation menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
 
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
           <a href="{{ '/travel-log/' | relative_url }}" {% if page.url == '/travel-log/' %}aria-current="page"{% endif %}>Travel Log</a>
           <a href="{{ '/cv/' | relative_url }}" {% if page.url == '/cv/' %}aria-current="page"{% endif %}>CV</a>
@@ -56,12 +67,61 @@
     </div>
     <script>
       (function () {
+        var menuToggle = document.querySelector(".menu-toggle");
+        var siteNav = document.getElementById("site-nav");
         var lightbox = document.getElementById("site-lightbox");
-        if (!lightbox) return;
-
-        var lightboxImage = lightbox.querySelector(".lightbox-image");
-        var closeButton = lightbox.querySelector(".lightbox-close");
+        var closeButton = lightbox ? lightbox.querySelector(".lightbox-close") : null;
+        var lightboxImage = lightbox ? lightbox.querySelector(".lightbox-image") : null;
         var lastActiveTrigger = null;
+
+        function syncMenuForViewport() {
+          if (!menuToggle || !siteNav) return;
+
+          var isMobile = window.matchMedia("(max-width: 600px)").matches;
+          if (!isMobile) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            siteNav.removeAttribute("data-open");
+          }
+        }
+
+        if (menuToggle && siteNav) {
+          menuToggle.addEventListener("click", function () {
+            var isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+            menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+
+            if (isOpen) {
+              siteNav.removeAttribute("data-open");
+            } else {
+              siteNav.setAttribute("data-open", "true");
+            }
+          });
+
+          document.addEventListener("click", function (event) {
+            if (!window.matchMedia("(max-width: 600px)").matches) return;
+            if (!siteNav.hasAttribute("data-open")) return;
+            if (event.target.closest(".menu-toggle") || event.target.closest(".site-nav")) return;
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            siteNav.removeAttribute("data-open");
+          });
+
+          siteNav.addEventListener("click", function (event) {
+            if (!window.matchMedia("(max-width: 600px)").matches) return;
+            if (!event.target.closest("a")) return;
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            siteNav.removeAttribute("data-open");
+          });
+
+          window.addEventListener("resize", syncMenuForViewport);
+          syncMenuForViewport();
+        }
+
+        if (!lightbox || !lightboxImage || !closeButton) return;
 
         function openLightbox(trigger) {
           var image = trigger.querySelector("img");
@@ -97,6 +157,14 @@
         });
 
         document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && menuToggle && siteNav && siteNav.hasAttribute("data-open")) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            siteNav.removeAttribute("data-open");
+            menuToggle.focus();
+            return;
+          }
+
           if (event.key === "Escape" && !lightbox.hidden) {
             closeLightbox();
           }
