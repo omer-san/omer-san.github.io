@@ -1,14 +1,12 @@
 ---
-title: Contact
+title: Contact・連絡
 permalink: /contact/
 eyebrow: Start Planning
-intro: Share the kind of trip you have in mind and Omer will follow up by email.
+intro: "Email: omertennenhaus@gmail.com"
 ---
 <div class="contact-layout">
   <div class="panel">
-    <h2>Get in touch</h2>
-
-    <form class="contact-form" action="https://formsubmit.co/omer.github@gmail.com" method="POST">
+    <form class="contact-form" action="https://formsubmit.co/omertennenhaus@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Omer San travel planning inquiry">
       <input type="hidden" name="_captcha" value="false">
 

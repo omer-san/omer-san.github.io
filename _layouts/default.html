@@ -24,7 +24,9 @@
             <span class="brand-mark">OS</span>
             <span>
               <strong>{{ site.title }}</strong>
-              <small>{{ site.subtitle }}</small>
+              {% if site.subtitle and site.subtitle != "" %}
+                <small>{{ site.subtitle }}</small>
+              {% endif %}
             </span>
           </a>
           <button
@@ -42,8 +44,9 @@
 
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
-          <a href="{{ '/travel-log/' | relative_url }}" {% if page.url == '/travel-log/' %}aria-current="page"{% endif %}>Travel Log</a>
-          <a href="{{ '/cv/' | relative_url }}" {% if page.url == '/cv/' %}aria-current="page"{% endif %}>CV</a>
+          <a href="{{ '/travel/' | relative_url }}" {% if page.url == '/travel/' %}aria-current="page"{% endif %}>Travel</a>
+          <a href="{{ '/media/' | relative_url }}" {% if page.url == '/media/' %}aria-current="page"{% endif %}>Media</a>
+          <a href="{{ '/cv/' | relative_url }}" {% if page.url == '/cv/' %}aria-current="page"{% endif %}>Resume</a>
           <a href="{{ '/testimonials/' | relative_url }}" {% if page.url == '/testimonials/' %}aria-current="page"{% endif %}>Testimonials</a>
           <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a>
         </nav>
@@ -62,7 +65,13 @@
       </div>
 
       <footer class="site-footer">
-        <p>Travel planning by {{ site.title }}.</p>
+        <p>
+          <span class="footer-title">{{ site.title }}</span>
+          {% if site.subtitle and site.subtitle != "" %}
+            <span class="footer-title footer-title-japanese"> | {{ site.subtitle }}</span>
+          {% endif %}
+        </p>
+        <p class="footer-credit">Web Design by H.A.C.</p>
       </footer>
     </div>
     <script>

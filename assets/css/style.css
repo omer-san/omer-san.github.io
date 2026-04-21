@@ -21,12 +21,15 @@
   --wrapper: 980px;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-serif-ref: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-japanese-serif: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Serif", "MS PMincho", serif;
   --font-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
   --font-ui: "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 html {
@@ -240,9 +243,9 @@ code {
 .brand small {
   display: block;
   color: var(--muted);
-  font: 500 0.88rem/1.4 var(--font-ui);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font: 400 1rem/1.4 var(--font-japanese-serif);
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .home-page .brand strong {
@@ -349,6 +352,14 @@ code {
   text-transform: uppercase;
 }
 
+.hero .eyebrow {
+  font-family: var(--font-japanese-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .page-header h1,
 .entry-header h1,
 .hero-copy h1 {
@@ -363,6 +374,12 @@ code {
 .entry-header h1 {
   font-size: 2.25rem;
   text-align: left;
+}
+
+.page-title-japanese {
+  font-family: var(--font-japanese-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .page-intro,
@@ -527,6 +544,85 @@ code {
   color: #b6c0c7;
 }
 
+.hero-intro-copy > * + * {
+  margin-top: 18px;
+}
+
+.intro-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(260px, 0.92fr);
+  gap: 18px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+
+.intro-card {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(19, 24, 29, 0.72), rgba(12, 15, 19, 0.78));
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+}
+
+.intro-card-japanese {
+  min-height: 0;
+  position: relative;
+  max-block-size: 430px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-japanese-serif);
+  color: #b6c0c7;
+  justify-self: end;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  padding-right: 114px;
+}
+
+.intro-card-japanese h2 {
+  margin: 0;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  white-space: pre-line;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-japanese-serif);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.intro-card-japanese ul {
+  display: none;
+}
+
+.intro-card-japanese-list {
+  display: contents;
+}
+
+.intro-card-japanese-item {
+  margin: 0;
+  position: relative;
+  padding-top: 1.4em;
+  color: inherit;
+}
+
+.intro-card-japanese-item::before {
+  content: "・";
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.2em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.intro-card-japanese-item + .intro-card-japanese-item {
+  margin-right: 14px;
+}
+
 .hero-intro-copy .lead-intro {
   margin-bottom: 18px;
   font-family: var(--font-display);
@@ -537,12 +633,42 @@ code {
   color: #ffffff;
 }
 
-.hero-intro-copy .title-line-note {
-  font-size: 0.68em;
+.hero-intro-copy .lead-intro-japanese {
+  margin-top: -6px;
+  font-family: var(--font-japanese-serif);
+  font-size: clamp(1.32rem, 2.45vw, 1.78rem);
   font-weight: 400;
-  font-family: "Times New Roman", Georgia, serif;
-  letter-spacing: 0;
-  opacity: 0.9;
+  letter-spacing: 0.02em;
+  color: #b6c0c7;
+}
+
+.hero-intro-copy h2 {
+  margin: 28px 0 10px;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro-card h2 {
+  margin: 0 0 14px;
+}
+
+.hero-intro-copy p {
+  margin: 0;
+  color: #d8dee3;
+}
+
+.hero-intro-copy ul {
+  margin: 0;
+  padding-left: 1.3rem;
+  color: #b6c0c7;
+}
+
+.hero-intro-copy li + li {
+  margin-top: 10px;
 }
 
 .hero-actions,
@@ -754,6 +880,125 @@ code {
   letter-spacing: 0.01em;
 }
 
+.travel-editorial {
+  display: grid;
+  gap: 40px;
+}
+
+.travel-manifesto {
+  position: relative;
+  padding: 14px 0 8px;
+}
+
+.travel-manifesto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(180px, 38vw);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(184, 138, 93, 0.95), rgba(255, 255, 255, 0));
+}
+
+.travel-quote {
+  margin: 0;
+  color: #d6dee3;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.6vw, 2.65rem);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  padding-bottom: 28px;
+}
+
+.travel-quote-japanese {
+  margin-top: 0;
+  color: #c5cfd6;
+  font-family: var(--font-japanese-serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+  line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: right;
+  padding-top: 28px;
+}
+
+.travel-atlas {
+  position: relative;
+  padding: 26px 0 0;
+}
+
+.travel-atlas-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px 24px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.travel-atlas h2,
+.travel-lines h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 500;
+}
+
+.travel-atlas-japanese h2 {
+  font-family: var(--font-japanese-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.travel-atlas-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font: 500 0.82rem/1.4 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.travel-atlas-note-japanese {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: none;
+}
+
+.travel-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  align-items: center;
+  padding: 18px 0 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.travel-route span {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #eef2f4;
+  font-family: var(--font-serif-ref);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.travel-route span:not(:last-child)::after {
+  content: "•";
+  color: rgba(184, 138, 93, 0.78);
+}
+
+.travel-route-japanese span {
+  font-family: var(--font-japanese-serif);
+  letter-spacing: 0.02em;
+}
+
+.travel-atlas-japanese {
+  padding-top: 6px;
+}
+
 .testimonial-card {
   display: grid;
   overflow: hidden;
@@ -961,7 +1206,7 @@ code {
 
 .site-footer {
   max-width: 920px;
-  margin: 36px auto 0;
+  margin: 24px auto 0;
   padding: 0 20px;
   color: #8f98a0;
   text-align: center;
@@ -969,8 +1214,30 @@ code {
 
 .site-footer p {
   margin: 0;
-  padding-top: 22px;
+  padding-top: 14px;
   border-top: 1px solid rgba(48, 65, 76, 0.08);
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #7f8991;
+}
+
+.footer-title-japanese {
+  font-family: var(--font-japanese-serif);
+  font-size: 0.96rem;
+  letter-spacing: 0.02em;
+  color: #7f8991;
+}
+
+.site-footer .footer-credit {
+  padding-top: 6px;
+  border-top: 0;
+  font: 500 0.68rem/1.4 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(127, 137, 145, 0.25);
 }
 
 @media (max-width: 800px) {
@@ -1063,6 +1330,55 @@ code {
     line-height: 1.12;
   }
 
+  .intro-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-card-japanese {
+    min-height: 0;
+    max-block-size: none;
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    padding: 24px 24px 24px 70px;
+  }
+
+  .intro-card-japanese h2 {
+    margin: 0;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+
+  .intro-card-japanese ul {
+    display: block;
+  }
+
+.intro-card-japanese-list {
+    display: block;
+  }
+
+  .intro-card-japanese-item {
+    position: static;
+    padding-top: 0;
+    margin: 0 0 10px;
+  }
+
+  .intro-card-japanese-item::before {
+    content: none;
+  }
+
+  .intro-card-japanese-item + .intro-card-japanese-item {
+    margin-right: 0;
+  }
+
+  .intro-card-japanese li + li {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+
   .feature-grid,
   .home-split,
   .contact-layout,
@@ -1088,6 +1404,14 @@ code {
 
   .home-split .panel {
     padding: 22px;
+  }
+
+  .travel-editorial {
+    gap: 30px;
+  }
+
+  .travel-atlas-header {
+    grid-template-columns: 1fr;
   }
 
   .home-preview-item {

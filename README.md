@@ -15,5 +15,6 @@ Open `http://127.0.0.1:4000`.
 
 - Add travel logs as markdown files in `_travel_logs/`
 - Add testimonials as markdown files in `_testimonials/`
+- Add media entries as markdown files in `_media/`
 - Replace the resume PDF at `assets/docs/omer_resume.pdf`
 - Update the LinkedIn link in `contact.md` when ready

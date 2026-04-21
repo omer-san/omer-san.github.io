@@ -1,5 +1,5 @@
 ---
-title: Testimonials
+title: Testimonials・推薦文
 permalink: /testimonials/
 eyebrow: Client Reviews
 intro: Feedback from travelers who planned their journeys with Omer.
@@ -9,7 +9,7 @@ intro: Feedback from travelers who planned their journeys with Omer.
   {% for review in reviews %}
     <article class="testimonial-card">
       <div class="testimonial-content">
-        <p class="card-meta">{{ review.client_name }}{% if review.trip %} · {{ review.trip }}{% endif %}</p>
+        <p class="card-meta">{{ review.client_name }}{% if review.from %} from {{ review.from }}{% endif %}</p>
         <h2><a href="{{ review.url | relative_url }}">{{ review.title }}</a></h2>
         <div class="testimonial-text">
           {{ review.content | markdownify }}
