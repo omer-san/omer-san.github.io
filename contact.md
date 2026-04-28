@@ -2,7 +2,7 @@
 title: Contact・連絡
 permalink: /contact/
 eyebrow: Start Planning
-intro: "Email: omertennenhaus@gmail.com"
+intro: omertennenhaus@gmail.com
 ---
 <div class="contact-layout">
   <div class="panel">

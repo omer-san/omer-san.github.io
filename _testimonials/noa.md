@@ -1,5 +1,5 @@
 ---
-title: "First trip to Japan"
+title: "Organized and convenient"
 date: 2025-11-11
 client_name: Noa
 from: Israel

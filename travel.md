@@ -5,10 +5,13 @@ permalink: /travel/
 <div class="travel-editorial">
   <section class="travel-manifesto">
     <p class="travel-quote">
-      Traveling can open you up to a new world, introduce you to new perspectives, and help you grow as a person.
+      Traveling can open you up to a new world,<br>
+      introduce you to new perspectives,<br>
+      and help you grow as a person.
     </p>
     <p class="travel-quote travel-quote-japanese">
-      旅するのは、新しい世界と視点を紹介して、<br>
+      旅するのは、<br>
+      新しい世界と視点を紹介して、<br>
       自分の成長を促してくれることだ。
     </p>
   </section>
@@ -49,7 +52,7 @@ permalink: /travel/
       <span>イスラエル</span>
       <span>トルコ</span>
       <span>ロドス島</span>
-      <span>セイシェル</span>
+      <span>セーシェル</span>
       <span>スイス</span>
       <span>イタリア</span>
       <span>スペイン</span>
@@ -58,7 +61,7 @@ permalink: /travel/
       <span>ハンガリー</span>
       <span>イギリス</span>
       <span>フランス</span>
-      <span>テネリフェ</span>
+      <span>テネリフェ島</span>
       <span>日本</span>
       <span>韓国</span>
       <span>台湾</span>

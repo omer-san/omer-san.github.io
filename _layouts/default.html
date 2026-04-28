@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@300;400;500;700&family=Libre+Baskerville:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
-  <body class="{% if page.url == '/' %}home-page{% endif %}">
+  <body class="{% if page.url == '/' %}home-page{% endif %}{% if page.url == '/travel/' %} travel-page{% endif %}{% if page.url == '/contact/' %} contact-page{% endif %}">
     <div class="site-shell">
       <header class="site-header">
         <div class="header-band">
@@ -43,12 +43,30 @@
         </div>
 
         <nav class="site-nav" id="site-nav" aria-label="Primary">
-          <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
-          <a href="{{ '/travel/' | relative_url }}" {% if page.url == '/travel/' %}aria-current="page"{% endif %}>Travel</a>
-          <a href="{{ '/media/' | relative_url }}" {% if page.url == '/media/' %}aria-current="page"{% endif %}>Media</a>
-          <a href="{{ '/cv/' | relative_url }}" {% if page.url == '/cv/' %}aria-current="page"{% endif %}>Resume</a>
-          <a href="{{ '/testimonials/' | relative_url }}" {% if page.url == '/testimonials/' %}aria-current="page"{% endif %}>Testimonials</a>
-          <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a>
+          <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %} aria-label="Home / ホーム">
+            <span class="nav-label nav-label-english">Home</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">ホーム</span>
+          </a>
+          <a href="{{ '/travel/' | relative_url }}" {% if page.url == '/travel/' %}aria-current="page"{% endif %} aria-label="Travel / 旅行">
+            <span class="nav-label nav-label-english">Travel</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">旅行</span>
+          </a>
+          <a href="{{ '/media/' | relative_url }}" {% if page.url == '/media/' %}aria-current="page"{% endif %} aria-label="Media / メディア">
+            <span class="nav-label nav-label-english">Media</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">メディア</span>
+          </a>
+          <a href="{{ '/cv/' | relative_url }}" {% if page.url == '/cv/' %}aria-current="page"{% endif %} aria-label="Resume / 履歴書">
+            <span class="nav-label nav-label-english">Resume</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">履歴書</span>
+          </a>
+          <a href="{{ '/testimonials/' | relative_url }}" {% if page.url == '/testimonials/' %}aria-current="page"{% endif %} aria-label="Testimonials / 推薦文">
+            <span class="nav-label nav-label-english">Testimonials</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">推薦文</span>
+          </a>
+          <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}aria-current="page"{% endif %} aria-label="Contact / 連絡">
+            <span class="nav-label nav-label-english">Contact</span>
+            <span class="nav-label nav-label-japanese" aria-hidden="true">連絡</span>
+          </a>
         </nav>
       </header>
 

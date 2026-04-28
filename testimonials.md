@@ -2,7 +2,6 @@
 title: Testimonials・推薦文
 permalink: /testimonials/
 eyebrow: Client Reviews
-intro: Feedback from travelers who planned their journeys with Omer.
 ---
 <div class="testimonial-grid">
   {% assign reviews = site.testimonials | sort: "date" | reverse %}

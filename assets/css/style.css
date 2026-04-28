@@ -284,19 +284,41 @@ code {
 }
 
 .site-nav a {
-  display: inline-block;
+  display: inline-grid;
+  place-items: center;
   color: var(--accent);
   text-align: center;
-  padding: 6px 12px;
+  padding: 7px 14px;
   margin: 0 1px;
   text-decoration: none;
-  font-size: 0.86rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.05em;
   border-radius: 999px;
   border: 1px solid transparent;
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.site-nav a .nav-label {
+  grid-area: 1 / 1;
+}
+
+.site-nav a .nav-label-japanese {
+  font-family: var(--font-japanese-serif);
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-nav a:hover .nav-label-english,
+.site-nav a:focus-visible .nav-label-english {
+  opacity: 0;
+}
+
+.site-nav a:hover .nav-label-japanese,
+.site-nav a:focus-visible .nav-label-japanese {
+  opacity: 1;
 }
 
 .home-page .site-nav a {
@@ -376,6 +398,16 @@ code {
   text-align: left;
 }
 
+.page-header h1::after,
+.entry-header h1::after {
+  content: "";
+  display: block;
+  width: min(180px, 38vw);
+  height: 1px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, rgba(184, 138, 93, 0.95), rgba(255, 255, 255, 0));
+}
+
 .page-title-japanese {
   font-family: var(--font-japanese-serif);
   font-weight: 400;
@@ -396,6 +428,12 @@ code {
   max-width: 760px;
   margin-left: 0;
   margin-right: 0;
+}
+
+.contact-page .page-header .page-intro {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page-body,
@@ -520,7 +558,7 @@ code {
 }
 
 .hero-overlay .hero-copy::before {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.86), transparent);
+  content: none;
 }
 
 .hero-intro {
@@ -571,8 +609,9 @@ code {
   max-block-size: 430px;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-family: var(--font-japanese-serif);
-  color: #b6c0c7;
+  font-family: var(--font-sans);
+  color: rgba(182, 192, 199, 0.72);
+  font-weight: 300;
   justify-self: end;
   padding-top: 24px;
   padding-left: 24px;
@@ -585,6 +624,7 @@ code {
   position: absolute;
   top: 24px;
   right: 24px;
+  color: #c7dfed;
   white-space: pre-line;
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -609,11 +649,19 @@ code {
   color: inherit;
 }
 
+.intro-card-japanese-item strong {
+  color: #c7dfed;
+  font-weight: 700;
+}
+
 .intro-card-japanese-item::before {
   content: "・";
   position: absolute;
   top: 0;
-  right: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 1em;
+  text-align: center;
   font-size: 1.2em;
   line-height: 1;
   color: rgba(255, 255, 255, 0.72);
@@ -644,7 +692,7 @@ code {
 
 .hero-intro-copy h2 {
   margin: 28px 0 10px;
-  color: #ffffff;
+  color: #c7dfed;
   font-size: 1.15rem;
   font-family: var(--font-ui);
   font-weight: 600;
@@ -661,10 +709,20 @@ code {
   color: #d8dee3;
 }
 
+.hero-intro-copy .intro-card-japanese-item {
+  color: rgba(182, 192, 199, 0.72);
+}
+
 .hero-intro-copy ul {
   margin: 0;
   padding-left: 1.3rem;
-  color: #b6c0c7;
+  color: rgba(182, 192, 199, 0.72);
+  font-weight: 300;
+}
+
+.hero-intro-copy li strong {
+  color: #c7dfed;
+  font-weight: 700;
 }
 
 .hero-intro-copy li + li {
@@ -885,19 +943,13 @@ code {
   gap: 40px;
 }
 
-.travel-manifesto {
-  position: relative;
-  padding: 14px 0 8px;
+.travel-page .page-header {
+  margin-bottom: 80px;
 }
 
-.travel-manifesto::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: min(180px, 38vw);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(184, 138, 93, 0.95), rgba(255, 255, 255, 0));
+.travel-manifesto {
+  padding: 0 0 8px;
+  text-align: center;
 }
 
 .travel-quote {
@@ -917,7 +969,6 @@ code {
   font-size: clamp(1.25rem, 2.4vw, 1.8rem);
   line-height: 2;
   letter-spacing: 0.02em;
-  text-align: right;
   padding-top: 28px;
 }
 
@@ -1083,7 +1134,7 @@ code {
 
 .resume-frame {
   width: 100%;
-  height: 1200px;
+  height: min(89vh, 973px);
   display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -1340,16 +1391,15 @@ code {
     position: static;
     writing-mode: horizontal-tb;
     text-orientation: mixed;
-    padding: 24px 24px 24px 70px;
+    padding: 24px;
   }
 
   .intro-card-japanese h2 {
-    margin: 0;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    margin: 0 0 14px;
+    position: static;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    white-space: normal;
   }
 
   .intro-card-japanese ul {
@@ -1361,13 +1411,20 @@ code {
   }
 
   .intro-card-japanese-item {
-    position: static;
+    position: relative;
     padding-top: 0;
+    padding-left: 1.15em;
     margin: 0 0 10px;
   }
 
   .intro-card-japanese-item::before {
-    content: none;
+    content: "・";
+    top: 0;
+    left: 0;
+    right: auto;
+    transform: none;
+    width: 1em;
+    text-align: left;
   }
 
   .intro-card-japanese-item + .intro-card-japanese-item {
@@ -1419,7 +1476,7 @@ code {
   }
 
   .resume-frame {
-    height: 72vh;
+    height: 78vh;
   }
 
   .content-page,
@@ -1504,11 +1561,11 @@ code {
   }
 
   .site-nav a {
-    display: inline-block;
+    display: inline-grid;
     width: auto;
     padding: 11px 12px;
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: center;
   }
 
